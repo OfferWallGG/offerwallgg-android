@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <!-- configChanges: a rotation must not reload the wall and lose the
+             user's place, their search or a running Traffic Task timer. -->
+        <activity
+            android:name="gg.offerwall.sdk.OfferwallActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|smallestScreenSize|uiMode"
+            android:exported="false"
+            android:theme="@android:style/Theme.Material.NoActionBar" />
+    </application>
+
+    <!-- Android 11+ package visibility: lets the SDK open store and browser
+         links without the app having to declare anything itself. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="market" />
+        </intent>
+    </queries>
+</manifest>
